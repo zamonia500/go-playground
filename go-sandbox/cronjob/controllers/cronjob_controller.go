@@ -117,6 +117,7 @@ func (r *CronJobReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ct
 	}
 
 	for i, job := range childJobs.Items {
+		log.Info("job.Name : ", job.Name)
 		_, finishedType := isJobFinished(&job)
 		switch finishedType {
 		case "": // ongoing
